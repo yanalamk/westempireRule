@@ -23,9 +23,81 @@
             align-items: center;
             justify-content: space-between;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Glassmorphism Header Setup */
+        /* Sidebar Toggle Button */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(18, 43, 28, 0.8);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            font-size: 24px;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+        }
+
+        .menu-btn:hover {
+            background: #2ecc71;
+            color: #030a06;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+        }
+
+        /* Side Menu Overlay & Navigation */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            height: 100%;
+            background: rgba(5, 18, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid rgba(46, 204, 113, 0.3);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.8);
+            transition: right 0.4s ease;
+            z-index: 999;
+            padding: 80px 25px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar h3 {
+            color: #2ecc71;
+            font-size: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .sidebar a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(18, 43, 28, 0.4);
+            border: 1px solid rgba(46, 204, 113, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background: #2ecc71;
+            color: #030a06;
+            font-weight: 600;
+        }
+
+        /* Header Setup */
         header {
             margin-top: 50px;
             display: flex;
@@ -47,12 +119,13 @@
             color: #2ecc71;
             font-size: 42px;
             font-weight: 800;
-            margin: 25px 0 40px;
+            margin: 25px 0 30px;
             text-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
             letter-spacing: 1px;
+            text-align: center;
         }
 
-        /* Main Grid & Cards */
+        /* Server Action Buttons */
         .container {
             display: flex;
             gap: 30px;
@@ -61,7 +134,7 @@
             width: 100%;
             max-width: 900px;
             padding: 0 20px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .box {
@@ -70,7 +143,7 @@
             border: 1px solid rgba(46, 204, 113, 0.25);
             border-radius: 20px;
             width: 260px;
-            height: 160px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -81,23 +154,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
             user-select: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.15), transparent);
-            transition: 0.5s;
-        }
-
-        .box:hover::before {
-            left: 100%;
         }
 
         .box:hover {
@@ -108,7 +164,129 @@
             border-color: #2ecc71;
         }
 
-        /* Footer Modernization */
+        /* Ideas Section */
+        .ideas-section {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px;
+            margin-bottom: 50px;
+        }
+
+        .ideas-section h2 {
+            color: #2ecc71;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Form Controls */
+        .idea-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .idea-form input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            background: rgba(18, 43, 28, 0.6);
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .idea-form input:focus {
+            border-color: #2ecc71;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+        }
+
+        .idea-form button {
+            padding: 12px 25px;
+            border-radius: 12px;
+            border: none;
+            background: #2ecc71;
+            color: #030a06;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .idea-form button:hover {
+            background: #27ae60;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Ideas Display Container */
+        .ideas-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .idea-card {
+            background: rgba(18, 43, 28, 0.4);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 15px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            gap: 15px;
+        }
+
+        .idea-text {
+            font-size: 18px;
+            color: #f0f0f0;
+            word-break: break-word;
+        }
+
+        .vote-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .vote-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .vote-yes {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border-color: rgba(46, 204, 113, 0.4);
+        }
+
+        .vote-yes:hover {
+            background: #2ecc71;
+            color: #030a06;
+        }
+
+        .vote-no {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border-color: rgba(231, 76, 60, 0.4);
+        }
+
+        .vote-no:hover {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        /* Footer */
         footer {
             width: 100%;
             text-align: center;
@@ -123,20 +301,106 @@
 
 <body>
 
+    <!-- Toggle Button for Side Menu -->
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <!-- Side Navigation Menu -->
+    <div class="sidebar" id="sidebar">
+        <h3>القائمة السريعة</h3>
+        <a href="index.html">الصفحة الرئيسية</a>
+        <a href="rules-admin.html">قوانين الإدارة</a>
+        <a href="rules-ministry.html">قوانين الوزارة</a>
+        <a href="#ideas-section" onclick="toggleMenu()">مقترحات الأعضاء</a>
+    </div>
+
     <header>
         <img src="West empire-Photoroom.png" alt="Hovana Logo">
     </header>
 
     <h1>مرحباً في Hovana</h1>
 
+    <!-- Rules Links -->
     <div class="container">
         <div class="box" onclick="location.href='rules-admin.html'">قوانين الإدارة</div>
         <div class="box" onclick="location.href='rules-ministry.html'">قوانين الوزارة</div>
     </div>
 
+    <!-- Ideas and Voting System -->
+    <div class="ideas-section" id="ideas-section">
+        <h2>اقترح فكرة جديدة</h2>
+        <div class="idea-form">
+            <input type="text" id="ideaInput" placeholder="اكتب فكرتك هنا..." />
+            <button onclick="addIdea()">إضافة</button>
+        </div>
+
+        <div class="ideas-list" id="ideasList">
+            <!-- Ideas will load dynamically here -->
+        </div>
+    </div>
+
     <footer>
         &copy; جميع الحقوق محفوظة لسيرفر Hovana - 2026
     </footer>
+
+    <script>
+        // Toggle Side Menu
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        // Ideas Management using LocalStorage
+        let ideas = JSON.parse(localStorage.getItem('hovana_ideas')) || [
+            { text: "إضافة سيارات جديدة للوزارة", yes: 0, no: 0 },
+            { text: "تعديل نظام الترقيات والإدارة", yes: 0, no: 0 }
+        ];
+
+        function renderIdeas() {
+            const list = document.getElementById('ideasList');
+            list.innerHTML = '';
+
+            ideas.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'idea-card';
+                card.innerHTML = `
+                    <div class="idea-text">${item.text}</div>
+                    <div class="vote-actions">
+                        <button class="vote-btn vote-yes" onclick="vote(${index}, 'yes')">
+                            نعم (${item.yes})
+                        </button>
+                        <button class="vote-btn vote-no" onclick="vote(${index}, 'no')">
+                            لا (${item.no})
+                        </button>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+
+            localStorage.setItem('hovana_ideas', JSON.stringify(ideas));
+        }
+
+        function addIdea() {
+            const input = document.getElementById('ideaInput');
+            const text = input.value.trim();
+
+            if (text !== '') {
+                ideas.unshift({ text: text, yes: 0, no: 0 });
+                input.value = '';
+                renderIdeas();
+            }
+        }
+
+        function vote(index, type) {
+            if (type === 'yes') {
+                ideas[index].yes++;
+            } else if (type === 'no') {
+                ideas[index].no++;
+            }
+            renderIdeas();
+        }
+
+        // Initial Load
+        renderIdeas();
+    </script>
 
 </body>
 
