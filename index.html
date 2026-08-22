@@ -26,7 +26,6 @@
             position: relative;
         }
 
-        /* Sidebar Toggle Button */
         .menu-btn {
             position: fixed;
             top: 20px;
@@ -40,32 +39,29 @@
             cursor: pointer;
             z-index: 1000;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
         }
 
         .menu-btn:hover {
             background: #2ecc71;
             color: #030a06;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
         }
 
-        /* Side Menu Overlay & Navigation */
         .sidebar {
             position: fixed;
             top: 0;
-            right: -320px;
-            width: 300px;
+            right: -340px;
+            width: 320px;
             height: 100%;
             background: rgba(5, 18, 10, 0.95);
             backdrop-filter: blur(15px);
             border-left: 1px solid rgba(46, 204, 113, 0.3);
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.8);
             transition: right 0.4s ease;
             z-index: 999;
             padding: 80px 25px 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            overflow-y: auto;
         }
 
         .sidebar.active {
@@ -75,44 +71,39 @@
         .sidebar h3 {
             color: #2ecc71;
             font-size: 20px;
-            margin-bottom: 10px;
             border-bottom: 1px solid rgba(46, 204, 113, 0.2);
             padding-bottom: 8px;
         }
 
-        .sidebar a {
+        .sidebar a, .sidebar button.link-btn {
             color: #e0e0e0;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             padding: 10px 15px;
             border-radius: 8px;
             background: rgba(18, 43, 28, 0.4);
             border: 1px solid rgba(46, 204, 113, 0.1);
             transition: all 0.3s ease;
+            text-align: right;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
         }
 
-        .sidebar a:hover {
+        .sidebar a:hover, .sidebar button.link-btn:hover {
             background: #2ecc71;
             color: #030a06;
             font-weight: 600;
         }
 
-        /* Header Setup */
         header {
             margin-top: 50px;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         header img {
             height: 110px;
             filter: drop-shadow(0 0 15px rgba(46, 204, 113, 0.4));
-            transition: transform 0.4s ease;
-        }
-
-        header img:hover {
-            transform: scale(1.05);
         }
 
         h1 {
@@ -121,11 +112,9 @@
             font-weight: 800;
             margin: 25px 0 30px;
             text-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
-            letter-spacing: 1px;
             text-align: center;
         }
 
-        /* Server Action Buttons */
         .container {
             display: flex;
             gap: 30px;
@@ -150,43 +139,38 @@
             font-size: 22px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.35s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
-            user-select: none;
         }
 
         .box:hover {
             background-color: #2ecc71;
             color: #030a06;
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.35);
-            border-color: #2ecc71;
         }
 
-        /* Ideas Section */
-        .ideas-section {
+        .ideas-section, .rules-section {
             width: 100%;
             max-width: 800px;
             padding: 0 20px;
             margin-bottom: 50px;
         }
 
-        .ideas-section h2 {
+        .ideas-section h2, .rules-section h2 {
             color: #2ecc71;
             font-size: 28px;
             margin-bottom: 20px;
             text-align: center;
         }
 
-        /* Form Controls */
         .idea-form {
             display: flex;
             gap: 10px;
             margin-bottom: 30px;
         }
 
-        .idea-form input {
+        .idea-form input, textarea {
             flex: 1;
             padding: 12px 18px;
             border-radius: 12px;
@@ -198,12 +182,7 @@
             outline: none;
         }
 
-        .idea-form input:focus {
-            border-color: #2ecc71;
-            box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
-        }
-
-        .idea-form button {
+        .idea-form button, .btn-primary {
             padding: 12px 25px;
             border-radius: 12px;
             border: none;
@@ -216,18 +195,6 @@
             transition: all 0.3s ease;
         }
 
-        .idea-form button:hover {
-            background: #27ae60;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
-        }
-
-        /* Ideas Display Container */
-        .ideas-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
         .idea-card {
             background: rgba(18, 43, 28, 0.4);
             border: 1px solid rgba(46, 204, 113, 0.2);
@@ -236,19 +203,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
+            margin-bottom: 15px;
             gap: 15px;
-        }
-
-        .idea-text {
-            font-size: 18px;
-            color: #f0f0f0;
-            word-break: break-word;
         }
 
         .vote-actions {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .vote-btn {
@@ -258,35 +220,51 @@
             font-family: 'Cairo', sans-serif;
             font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
         }
 
-        .vote-yes {
-            background: rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
-            border-color: rgba(46, 204, 113, 0.4);
-        }
+        .vote-yes { background: rgba(46, 204, 113, 0.2); color: #2ecc71; border-color: rgba(46, 204, 113, 0.4); }
+        .vote-yes.active-vote { background: #2ecc71; color: #030a06; }
 
-        .vote-yes:hover {
-            background: #2ecc71;
-            color: #030a06;
-        }
+        .vote-no { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border-color: rgba(231, 76, 60, 0.4); }
+        .vote-no.active-vote { background: #e74c3c; color: #fff; }
 
-        .vote-no {
-            background: rgba(231, 76, 60, 0.2);
-            color: #e74c3c;
-            border-color: rgba(231, 76, 60, 0.4);
-        }
-
-        .vote-no:hover {
+        .btn-delete {
             background: #e74c3c;
-            color: #fff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
         }
 
-        /* Footer */
+        /* Admin Section Box */
+        .admin-panel {
+            display: none;
+            background: rgba(5, 18, 10, 0.9);
+            border: 1px solid #2ecc71;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .admin-panel.active { display: block; }
+
+        .rules-editor {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            resize: vertical;
+        }
+
         footer {
             width: 100%;
             text-align: center;
@@ -294,23 +272,20 @@
             background: rgba(3, 10, 6, 0.8);
             border-top: 1px solid rgba(46, 204, 113, 0.15);
             color: #8fa89b;
-            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Toggle Button for Side Menu -->
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-    <!-- Side Navigation Menu -->
     <div class="sidebar" id="sidebar">
         <h3>القائمة السريعة</h3>
         <a href="index.html">الصفحة الرئيسية</a>
-        <a href="rules-admin.html">قوانين الإدارة</a>
-        <a href="rules-ministry.html">قوانين الوزارة</a>
-        <a href="#ideas-section" onclick="toggleMenu()">مقترحات الأعضاء</a>
+        <a href="#rules-display">عرض القوانين</a>
+        <a href="#ideas-section">مقترحات الأعضاء</a>
+        <button class="link-btn" onclick="loginAdmin()">لوحة الأدمن 🔒</button>
     </div>
 
     <header>
@@ -319,13 +294,39 @@
 
     <h1>مرحباً في Hovana</h1>
 
-    <!-- Rules Links -->
     <div class="container">
-        <div class="box" onclick="location.href='rules-admin.html'">قوانين الإدارة</div>
-        <div class="box" onclick="location.href='rules-ministry.html'">قوانين الوزارة</div>
+        <div class="box" onclick="scrollToSection('admin-rules')">قوانين الإدارة</div>
+        <div class="box" onclick="scrollToSection('ministry-rules')">قوانين الوزارة</div>
     </div>
 
-    <!-- Ideas and Voting System -->
+    <!-- Live Rules View Section -->
+    <div class="rules-section" id="rules-display">
+        <div id="admin-rules">
+            <h2>قوانين الإدارة</h2>
+            <div class="idea-card" id="adminRulesText"></div>
+        </div>
+        <div id="ministry-rules" style="margin-top: 30px;">
+            <h2>قوانين الوزارة</h2>
+            <div class="idea-card" id="ministryRulesText"></div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <h2 style="color: #2ecc71; text-align: center;">لوحة تحكم الأدمن</h2>
+        
+        <div class="rules-editor">
+            <h3>تعديل قوانين الإدارة:</h3>
+            <textarea id="adminRulesInput"></textarea>
+            
+            <h3>تعديل قوانين الوزارة:</h3>
+            <textarea id="ministryRulesInput"></textarea>
+            
+            <button class="btn-primary" onclick="saveRules()">حفظ التعديلات</button>
+        </div>
+    </div>
+
+    <!-- Ideas Section -->
     <div class="ideas-section" id="ideas-section">
         <h2>اقترح فكرة جديدة</h2>
         <div class="idea-form">
@@ -333,9 +334,7 @@
             <button onclick="addIdea()">إضافة</button>
         </div>
 
-        <div class="ideas-list" id="ideasList">
-            <!-- Ideas will load dynamically here -->
-        </div>
+        <div id="ideasList"></div>
     </div>
 
     <footer>
@@ -343,39 +342,67 @@
     </footer>
 
     <script>
-        // Toggle Side Menu
+        let isAdmin = false;
+
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
         }
 
-        // Ideas Management using LocalStorage
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Single Vote Logic with LocalStorage tracking
         let ideas = JSON.parse(localStorage.getItem('hovana_ideas')) || [
-            { text: "إضافة سيارات جديدة للوزارة", yes: 0, no: 0 },
-            { text: "تعديل نظام الترقيات والإدارة", yes: 0, no: 0 }
+            { id: 1, text: "إضافة سيارات جديدة للوزارة", yes: 0, no: 0 },
+            { id: 2, text: "تعديل نظام الترقيات والإدارة", yes: 0, no: 0 }
         ];
+
+        let userVotes = JSON.parse(localStorage.getItem('hovana_user_votes')) || {};
 
         function renderIdeas() {
             const list = document.getElementById('ideasList');
             list.innerHTML = '';
 
             ideas.forEach((item, index) => {
+                const userVote = userVotes[item.id];
                 const card = document.createElement('div');
                 card.className = 'idea-card';
                 card.innerHTML = `
                     <div class="idea-text">${item.text}</div>
                     <div class="vote-actions">
-                        <button class="vote-btn vote-yes" onclick="vote(${index}, 'yes')">
+                        <button class="vote-btn vote-yes ${userVote === 'yes' ? 'active-vote' : ''}" onclick="vote(${index}, 'yes')">
                             نعم (${item.yes})
                         </button>
-                        <button class="vote-btn vote-no" onclick="vote(${index}, 'no')">
+                        <button class="vote-btn vote-no ${userVote === 'no' ? 'active-vote' : ''}" onclick="vote(${index}, 'no')">
                             لا (${item.no})
                         </button>
+                        ${isAdmin ? `<button class="btn-delete" onclick="deleteIdea(${index})">حذف</button>` : ''}
                     </div>
                 `;
                 list.appendChild(card);
             });
 
             localStorage.setItem('hovana_ideas', JSON.stringify(ideas));
+            localStorage.setItem('hovana_user_votes', JSON.stringify(userVotes));
+        }
+
+        function vote(index, type) {
+            const idea = ideas[index];
+            const currentVote = userVotes[idea.id];
+
+            if (currentVote === type) return; // Prevent voting for the same option again
+
+            if (currentVote) {
+                // Remove previous vote count
+                idea[currentVote]--;
+            }
+
+            // Apply new vote
+            idea[type]++;
+            userVotes[idea.id] = type;
+
+            renderIdeas();
         }
 
         function addIdea() {
@@ -383,22 +410,59 @@
             const text = input.value.trim();
 
             if (text !== '') {
-                ideas.unshift({ text: text, yes: 0, no: 0 });
+                ideas.unshift({ id: Date.now(), text: text, yes: 0, no: 0 });
                 input.value = '';
                 renderIdeas();
             }
         }
 
-        function vote(index, type) {
-            if (type === 'yes') {
-                ideas[index].yes++;
-            } else if (type === 'no') {
-                ideas[index].no++;
-            }
+        function deleteIdea(index) {
+            ideas.splice(index, 1);
             renderIdeas();
         }
 
-        // Initial Load
+        // Admin Functionality
+        function loginAdmin() {
+            const pwd = prompt("أدخل كلمة مرور الأدمن:");
+            if (pwd === "Rxcskjdswe2@#kdj") {
+                isAdmin = true;
+                document.getElementById('adminPanel').classList.add('active');
+                alert("تم تسجيل الدخول كأدمن بنجاح!");
+                renderIdeas();
+                toggleMenu();
+            } else if (pwd !== null) {
+                alert("كلمة المرور خاطئة!");
+            }
+        }
+
+        // Rules Editing Logic
+        let defaultAdminRules = "1. احترام جميع الأعضاء الإداريين.\n2. عدم استخدام الصلاحيات لأغراض شخصية.";
+        let defaultMinistryRules = "1. الالتزام بالزي الرسمي.\n2. التواجد في أوقات الشفت الرسمية.";
+
+        function loadRules() {
+            const savedAdmin = localStorage.getItem('hovana_admin_rules') || defaultAdminRules;
+            const savedMinistry = localStorage.getItem('hovana_ministry_rules') || defaultMinistryRules;
+
+            document.getElementById('adminRulesText').innerText = savedAdmin;
+            document.getElementById('ministryRulesText').innerText = savedMinistry;
+            
+            document.getElementById('adminRulesInput').value = savedAdmin;
+            document.getElementById('ministryRulesInput').value = savedMinistry;
+        }
+
+        function saveRules() {
+            const newAdmin = document.getElementById('adminRulesInput').value;
+            const newMinistry = document.getElementById('ministryRulesInput').value;
+
+            localStorage.setItem('hovana_admin_rules', newAdmin);
+            localStorage.setItem('hovana_ministry_rules', newMinistry);
+
+            loadRules();
+            alert("تم حفظ القوانين الجديدة!");
+        }
+
+        // Initial Initialization
+        loadRules();
         renderIdeas();
     </script>
 
